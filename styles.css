@@ -37,3 +37,21 @@
 .academy-band{background:var(--gold);color:var(--ink)}.academy-band-grid{display:grid;grid-template-columns:repeat(3,1fr)}.academy-band-grid div{padding:28px;border-right:1px solid rgba(18,35,30,.2)}.academy-band-grid div:first-child{padding-left:0}.academy-band-grid div:last-child{border:0}.academy-band span{display:block;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.academy-band strong{font:700 16px/1.35 'Playfair Display',serif}
 @media(max-width:900px){.roadmap-intro,.comparison-grid{grid-template-columns:1fr;gap:30px}.roadmap-track,.outcomes-grid{grid-template-columns:1fr 1fr}.resource-grid{grid-template-columns:1fr}.academy-band-grid{grid-template-columns:1fr}.academy-band-grid div{border-right:0;border-bottom:1px solid rgba(18,35,30,.2);padding-left:0}}
 @media(max-width:560px){.hero-proof{grid-template-columns:1fr}.roadmap,.resources-section,.comparison{padding:72px 0}.roadmap-track,.outcomes-grid,.compare-cards{grid-template-columns:1fr}.roadmap-track article,.roadmap-track article:not(:first-child){padding:24px 0;border-right:0;border-bottom:1px solid rgba(255,255,255,.16)}.roadmap-note{flex-direction:column}.outcomes-grid>div,.outcomes-grid>div:first-child{padding:22px 0;border-right:0;border-bottom:1px solid #d4c7b3}.resource-main{padding:28px}.resource-main .btn{width:100%}}
+
+/* Featured handbook product */
+.handbook-feature{grid-template-columns:minmax(320px,.95fr) 1.05fr;gap:44px;padding:32px;align-items:center}
+.handbook-visual{overflow:hidden;border-radius:6px;background:#071a29;box-shadow:0 18px 45px rgba(8,29,39,.22)}
+.handbook-visual img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+.handbook-copy h3{font-size:clamp(34px,4vw,50px);line-height:1.04}
+.book-subtitle{margin-top:10px!important;color:var(--green2)!important;font-weight:800}
+.book-formats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
+.book-formats>div{padding:18px;border:1px solid #d7cdbd;background:rgba(255,255,255,.7)}
+.book-formats span,.book-formats small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.book-formats strong{display:block;margin:4px 0;color:var(--green);font:700 26px 'Playfair Display',serif}
+.book-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.book-actions .btn{padding:0 14px;text-align:center}
+.outline-book{background:transparent;color:var(--green);border:1px solid var(--green)}
+.outline-book:hover{background:var(--green);color:white}
+.order-note{margin:14px 0 0!important;color:var(--muted)!important;font-size:11px}
+@media(max-width:900px){.handbook-feature{grid-template-columns:1fr}.handbook-visual{max-width:620px;margin:auto}}
+@media(max-width:560px){.handbook-feature{padding:18px}.book-formats,.book-actions{grid-template-columns:1fr}.handbook-copy h3{font-size:34px}}
