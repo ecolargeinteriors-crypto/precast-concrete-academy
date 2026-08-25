@@ -55,3 +55,10 @@
 .order-note{margin:14px 0 0!important;color:var(--muted)!important;font-size:11px}
 @media(max-width:900px){.handbook-feature{grid-template-columns:1fr}.handbook-visual{max-width:620px;margin:auto}}
 @media(max-width:560px){.handbook-feature{padding:18px}.book-formats,.book-actions{grid-template-columns:1fr}.handbook-copy h3{font-size:34px}}
+
+/* Floating Selar ebook checkout */
+.floating-book-cta{position:fixed;z-index:39;right:20px;bottom:88px;display:inline-flex;align-items:center;gap:9px;padding:11px 14px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:#0d3b30;color:#fff;text-decoration:none;font-size:13px;font-weight:850;letter-spacing:.01em;box-shadow:0 12px 30px rgba(0,0,0,.24);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.floating-book-cta:hover,.floating-book-cta:focus-visible{transform:translateY(-2px);background:#145344;box-shadow:0 16px 34px rgba(0,0,0,.3)}
+.floating-book-cta__price{padding:5px 8px;border-radius:999px;background:#e6ad43;color:#10251f;font-size:11px;font-weight:900;white-space:nowrap}
+@media(max-width:480px){.floating-book-cta{right:14px;bottom:84px;padding:10px 12px}.floating-book-cta__label{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.floating-book-cta{transition:none}}
