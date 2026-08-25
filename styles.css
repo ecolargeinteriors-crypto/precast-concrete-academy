@@ -62,3 +62,15 @@
 .floating-book-cta__price{padding:5px 8px;border-radius:999px;background:#e6ad43;color:#10251f;font-size:11px;font-weight:900;white-space:nowrap}
 @media(max-width:480px){.floating-book-cta{right:14px;bottom:84px;padding:10px 12px}.floating-book-cta__label{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.floating-book-cta{transition:none}}
+
+/* Second manual product */
+.manual-product{margin-top:34px;grid-template-columns:minmax(240px,.62fr) 1.38fr;background:#ece5d7;border:1px solid #d8cdbb}
+.manual-cover{max-width:360px;margin:auto}
+.manual-cover img{aspect-ratio:2/3;object-fit:cover}
+.manual-highlights{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin:20px 0;padding:0;list-style:none}
+.manual-highlights li{position:relative;padding-left:18px;color:var(--muted);font-size:13px}
+.manual-highlights li:before{content:"✓";position:absolute;left:0;color:var(--green2);font-weight:900}
+.single-format{grid-template-columns:minmax(220px,360px)}
+.single-action{grid-template-columns:minmax(240px,430px)}
+@media(max-width:900px){.manual-product{grid-template-columns:1fr}.manual-cover{max-width:420px}}
+@media(max-width:560px){.manual-highlights{grid-template-columns:1fr}.single-format,.single-action{grid-template-columns:1fr}}
