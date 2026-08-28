@@ -9,6 +9,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{'brand-green':'#0B2E1F','brand-green-hover':'#164A32','brand-brass':'#C4A35A','brand-brass-hover':'#B39249','brand-bg':'#F7F5F0','brand-border':'#E5E0D8','brand-muted':'#4B4B4B'},fontFamily:{serif:['Instrument Serif','Georgia','serif'],sans:['Inter','Arial','sans-serif']},boxShadow:{soft:'0 18px 50px rgba(11,46,31,.09)'}}}}</script>
 <style>::selection{background:#C4A35A;color:#0B2E1F}body{font-family:Inter,Arial,sans-serif}.grain{background-image:radial-gradient(rgba(11,46,31,.08) .55px,transparent .55px);background-size:8px 8px}.eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;font-weight:700}.manual-card img{transition:transform .55s cubic-bezier(.2,.8,.2,1)}.manual-card:hover img{transform:scale(1.025)}.focus-ring:focus-visible{outline:3px solid #C4A35A;outline-offset:3px}</style>
+<style>#loss-calculator{display:none}</style>
 </head>
 <body class="bg-brand-bg text-[#111111] antialiased">
 <a href="#main" class="focus-ring fixed left-3 top-3 z-[100] -translate-y-20 rounded bg-white px-4 py-2 text-sm font-semibold focus:translate-y-0">Skip to content</a>
@@ -60,8 +61,139 @@
 <section aria-labelledby="trust-title" class="bg-[#EEF3F0]"><div class="mx-auto max-w-7xl px-5 py-16 lg:px-8"><div class="grid gap-8 lg:grid-cols-[.72fr_1.28fr] lg:items-center"><div><p class="eyebrow text-brand-brass">Evidence before promises</p><h2 id="trust-title" class="mt-4 font-serif text-4xl leading-none text-brand-green sm:text-5xl">See how the system works.</h2></div><div class="grid gap-4 sm:grid-cols-3"><a href="#free-checklist-signup" class="focus-ring rounded-xl border border-brand-border bg-white p-5"><strong class="text-brand-green">Printable QC checklist</strong><span class="mt-2 block text-sm text-brand-muted">Join the technical list and inspect the control logic.</span></a><a href="downloads/pca-factory-tools-pack.xlsx" class="focus-ring rounded-xl border border-brand-border bg-white p-5"><strong class="text-brand-green">Editable factory tools</strong><span class="mt-2 block text-sm text-brand-muted">Test the records in your yard.</span></a><a href="resources/index.html" class="focus-ring rounded-xl border border-brand-border bg-white p-5"><strong class="text-brand-green">Open technical lessons</strong><span class="mt-2 block text-sm text-brand-muted">Judge the teaching quality first.</span></a></div></div><p class="mt-8 border-t border-brand-border pt-6 text-sm leading-6 text-brand-muted">Buyer and trainee reviews will be added only when they are genuine and permission has been received to publish them.</p></div></section>
 
 <section id="lesson" class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28"><article class="grid overflow-hidden rounded-xl border border-brand-border bg-white lg:grid-cols-[.8fr_1.2fr]"><div class="relative min-h-80"><img src="https://images.unsplash.com/photo-1518709414768-a88981a4515d?auto=format&fit=crop&w=1200&q=85" alt="Concrete surface and construction detail" class="absolute inset-0 h-full w-full object-cover grayscale"><div class="absolute inset-0 bg-brand-green/25"></div></div><div class="p-8 sm:p-12 lg:p-16"><p class="eyebrow text-brand-brass">Free starter lesson</p><h2 class="mt-5 font-serif text-5xl leading-none text-brand-green">Curing: The Lowest-Cost Quality Upgrade</h2><p class="mt-6 max-w-2xl leading-7 text-brand-muted">Good curing protects the water needed for cement hydration. It improves strength development, reduces permeability and helps prevent avoidable cracking and surface weakness.</p><div class="mt-7 flex flex-wrap gap-2"><span class="rounded-full bg-brand-bg px-4 py-2 text-sm">Moisture retention</span><span class="rounded-full bg-brand-bg px-4 py-2 text-sm">Strength development</span><span class="rounded-full bg-brand-bg px-4 py-2 text-sm">Lower permeability</span></div><a href="resources/curing-concrete-products.html" class="focus-ring mt-9 inline-flex rounded-lg border border-brand-green px-5 py-3 font-semibold text-brand-green hover:bg-brand-green hover:text-white">Read the free lesson <span class="ml-2">→</span></a></div></article></section>
+<section id="academy-tool-center" aria-labelledby="tool-center-title" class="border-y border-brand-border bg-[#EEF3F0]">
+  <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="eyebrow text-brand-brass">Interactive factory controls</p>
+      <h2 id="tool-center-title" class="mt-4 font-serif text-5xl leading-none text-brand-green sm:text-6xl">Test the numbers before you commit.</h2>
+      <p class="mx-auto mt-6 max-w-2xl leading-7 text-brand-muted">Run preliminary production, flooring and batching calculations using your own factory or project inputs. Every result shows its assumptions and limitations.</p>
+    </div>
+    <div class="mt-10 overflow-hidden rounded-xl border border-brand-border bg-white shadow-soft">
+      <div class="border-b border-brand-border bg-brand-bg p-2" role="tablist" aria-label="PCA calculation tools"><div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
+        <button id="tab-loss" type="button" role="tab" aria-selected="true" aria-controls="panel-loss" data-tool-tab="panel-loss" class="focus-ring rounded-lg bg-brand-green px-4 py-3 text-sm font-semibold text-white">Breakage cost</button>
+        <button id="tab-flooring" type="button" role="tab" aria-selected="false" aria-controls="panel-flooring" data-tool-tab="panel-flooring" tabindex="-1" class="focus-ring rounded-lg px-4 py-3 text-sm font-semibold text-brand-muted hover:bg-white hover:text-brand-green">Flooring estimate</button>
+        <button id="tab-moisture" type="button" role="tab" aria-selected="false" aria-controls="panel-moisture" data-tool-tab="panel-moisture" tabindex="-1" class="focus-ring rounded-lg px-4 py-3 text-sm font-semibold text-brand-muted hover:bg-white hover:text-brand-green">Moisture correction</button>
+      </div></div>
+      <div class="p-6 sm:p-8 lg:p-10">
+        <section id="panel-loss" role="tabpanel" aria-labelledby="tab-loss" data-tool-panel><div class="grid gap-9 lg:grid-cols-[.72fr_1.28fr] lg:items-start">
+          <div><p class="eyebrow text-brand-green">Production economics</p><h3 class="mt-3 font-serif text-4xl leading-none text-brand-green">Breakage and reject-loss assessment</h3><p class="mt-5 leading-7 text-brand-muted">Estimate the manufacturing cost tied up in rejected units, then compare it with a realistic target rate.</p><p class="mt-5 rounded-lg border border-brand-border bg-brand-bg p-4 text-sm leading-6 text-brand-muted"><strong class="text-brand-green">Use production cost—not selling price.</strong> This is an operational estimate, not a promise of recoverable savings.</p></div>
+          <form id="toolLossForm" class="grid gap-5 sm:grid-cols-2"><label class="text-sm font-semibold text-brand-green">Daily production<input id="toolDaily" type="number" min="0" step="1" value="1000" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><label class="text-sm font-semibold text-brand-green">Operating days per year<input id="toolWorkDays" type="number" min="1" max="366" step="1" value="300" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><label class="text-sm font-semibold text-brand-green">Current reject rate (%)<input id="toolRejectRate" type="number" min="0" max="100" step="0.1" value="5" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><label class="text-sm font-semibold text-brand-green">Target reject rate (%)<input id="toolTargetRate" type="number" min="0" max="100" step="0.1" value="2" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><label class="text-sm font-semibold text-brand-green sm:col-span-2">Production cost per unit (KES)<input id="toolUnitCost" type="number" min="0" step="0.01" value="50" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><button type="submit" class="focus-ring rounded-lg bg-brand-green px-6 py-4 font-semibold text-white hover:bg-brand-green-hover sm:col-span-2">Run financial assessment</button>
+          <div id="toolLossResult" class="hidden rounded-xl border border-brand-border bg-brand-bg p-5 sm:col-span-2" role="status" aria-live="polite"><div class="grid gap-4 sm:grid-cols-2"><p><span class="block text-xs uppercase tracking-wider text-brand-muted">Rejected units/year</span><strong id="toolRejectedUnits" class="mt-1 block text-2xl text-brand-green">0</strong></p><p><span class="block text-xs uppercase tracking-wider text-brand-muted">Current annual loss</span><strong id="toolAnnualLoss" class="mt-1 block text-2xl text-[#8C3B2E]">KES 0</strong></p><p><span class="block text-xs uppercase tracking-wider text-brand-muted">Loss at target</span><strong id="toolTargetLoss" class="mt-1 block text-2xl text-brand-green">KES 0</strong></p><p><span class="block text-xs uppercase tracking-wider text-brand-muted">Potential reduction</span><strong id="toolPotentialSaving" class="mt-1 block text-2xl text-brand-brass-hover">KES 0</strong></p></div><p id="toolLossNote" class="mt-4 border-t border-brand-border pt-4 text-sm leading-6 text-brand-muted"></p></div></form>
+        </div></section>
+        <section id="panel-flooring" role="tabpanel" aria-labelledby="tab-flooring" data-tool-panel hidden><div class="grid gap-9 lg:grid-cols-[.72fr_1.28fr] lg:items-start">
+          <div><p class="eyebrow text-brand-green">Preliminary planning</p><h3 class="mt-3 font-serif text-4xl leading-none text-brand-green">Beam-and-block quantity estimate</h3><p class="mt-5 leading-7 text-brand-muted">Estimate beam lines, total beam length and infill units from the specified module. It does not select a safe span, beam capacity, reinforcement or topping.</p><p class="mt-5 rounded-lg border border-[#D7B6AE] bg-[#FFF7F4] p-4 text-sm leading-6 text-[#733B31]"><strong>Engineering check required:</strong> use approved structural drawings and supplier specifications before ordering or construction.</p></div>
+          <form id="toolFloorForm" class="grid gap-5 sm:grid-cols-2"><label class="text-sm font-semibold text-brand-green">Beam span / slab length (m)<input id="toolSpan" type="number" min="0.1" step="0.01" value="6" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><label class="text-sm font-semibold text-brand-green">Floor width across beams (m)<input id="toolFloorWidth" type="number" min="0.1" step="0.01" value="10" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><label class="text-sm font-semibold text-brand-green">Beam spacing, centre-to-centre (m)<input id="toolBeamSpacing" type="number" min="0.1" step="0.01" value="0.60" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><label class="text-sm font-semibold text-brand-green">Infill module along span (m)<input id="toolPotLength" type="number" min="0.05" step="0.01" value="0.40" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><label class="text-sm font-semibold text-brand-green sm:col-span-2">Ordering allowance (%)<input id="toolFloorWaste" type="number" min="0" max="25" step="0.1" value="5" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><button type="submit" class="focus-ring rounded-lg bg-brand-green px-6 py-4 font-semibold text-white hover:bg-brand-green-hover sm:col-span-2">Generate preliminary quantities</button>
+          <div id="toolFloorResult" class="hidden rounded-xl border border-brand-border bg-brand-bg p-5 sm:col-span-2" role="status" aria-live="polite"><div class="grid gap-4 sm:grid-cols-2"><p><span class="block text-xs uppercase tracking-wider text-brand-muted">Beam lines</span><strong id="toolBeamLines" class="mt-1 block text-2xl text-brand-green">0</strong></p><p><span class="block text-xs uppercase tracking-wider text-brand-muted">Total beam length</span><strong id="toolBeamLength" class="mt-1 block text-2xl text-brand-green">0 m</strong></p><p><span class="block text-xs uppercase tracking-wider text-brand-muted">Infill units before allowance</span><strong id="toolPotBase" class="mt-1 block text-2xl text-brand-green">0</strong></p><p><span class="block text-xs uppercase tracking-wider text-brand-muted">Suggested order quantity</span><strong id="toolPotOrder" class="mt-1 block text-2xl text-brand-brass-hover">0</strong></p></div><p id="toolFloorNote" class="mt-4 border-t border-brand-border pt-4 text-sm leading-6 text-brand-muted"></p><a id="toolFloorWhatsApp" href="https://wa.me/254745471300" target="_blank" rel="noopener noreferrer" class="focus-ring mt-5 inline-flex rounded-lg bg-[#18A66A] px-5 py-3 font-semibold text-white">Request a verified quotation</a></div></form>
+        </div></section>
+        <section id="panel-moisture" role="tabpanel" aria-labelledby="tab-moisture" data-tool-panel hidden><div class="grid gap-9 lg:grid-cols-[.72fr_1.28fr] lg:items-start">
+          <div><p class="eyebrow text-brand-green">Batch water control</p><h3 class="mt-3 font-serif text-4xl leading-none text-brand-green">Aggregate moisture correction</h3><p class="mt-5 leading-7 text-brand-muted">Correct mixer water for free surface moisture carried by wet sand. Inputs must use the same moisture convention and a representative stockpile sample.</p><p class="mt-5 rounded-lg border border-brand-border bg-brand-bg p-4 text-sm leading-6 text-brand-muted">The calculation assumes moisture and absorption are percentages of oven-dry mass. Re-test when rainfall, drainage or stockpile conditions change.</p></div>
+          <form id="toolMoistureForm" class="grid gap-5 sm:grid-cols-2"><label class="text-sm font-semibold text-brand-green">Designed batch water (L)<input id="toolDesignWater" type="number" min="0" step="0.1" value="150" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><label class="text-sm font-semibold text-brand-green">Wet sand batched (kg)<input id="toolWetSand" type="number" min="0" step="0.1" value="450" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><label class="text-sm font-semibold text-brand-green">Measured sand moisture (%)<input id="toolSandMoisture" type="number" min="0" max="50" step="0.1" value="4.5" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><label class="text-sm font-semibold text-brand-green">Sand absorption / SSD (%)<input id="toolSandAbsorption" type="number" min="0" max="20" step="0.1" value="1.0" required class="focus-ring mt-2 w-full rounded-lg border border-brand-border bg-brand-bg px-4 py-3 font-normal text-[#111]"></label><button type="submit" class="focus-ring rounded-lg bg-brand-green px-6 py-4 font-semibold text-white hover:bg-brand-green-hover sm:col-span-2">Calculate mixer-water correction</button>
+          <div id="toolMoistureResult" class="hidden rounded-xl border border-brand-border bg-brand-bg p-5 sm:col-span-2" role="status" aria-live="polite"><div class="grid gap-4 sm:grid-cols-3"><p><span class="block text-xs uppercase tracking-wider text-brand-muted">Estimated dry sand</span><strong id="toolDrySand" class="mt-1 block text-2xl text-brand-green">0 kg</strong></p><p><span class="block text-xs uppercase tracking-wider text-brand-muted">Free water from sand</span><strong id="toolFreeWater" class="mt-1 block text-2xl text-[#8C3B2E]">0 L</strong></p><p><span class="block text-xs uppercase tracking-wider text-brand-muted">Water to add at mixer</span><strong id="toolMixerWater" class="mt-1 block text-2xl text-brand-brass-hover">0 L</strong></p></div><p id="toolMoistureNote" class="mt-4 border-t border-brand-border pt-4 text-sm leading-6 text-brand-muted"></p></div></form>
+        </div></section>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
 <a href="https://wa.me/254745471300?text=Hello%20Precast%20Concrete%20Academy%2C%20I%20need%20help%20choosing%20a%20manual." aria-label="Chat with PCA on WhatsApp" class="focus-ring fixed bottom-20 right-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#18A66A] text-sm font-bold text-white shadow-2xl md:bottom-6">WA</a><div class="fixed inset-x-0 bottom-0 z-30 border-t border-white/10 bg-brand-green px-4 py-3 text-white shadow-2xl md:hidden"><div class="mx-auto flex max-w-lg items-center justify-between gap-3"><span class="text-sm font-semibold">Factory-ready manuals</span><a href="#manuals" class="focus-ring rounded-lg bg-brand-brass px-5 py-3 text-sm font-bold text-brand-green">Browse &amp; buy</a></div></div><footer id="contact" class="bg-brand-green text-white"><div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24"><div class="grid gap-10 lg:grid-cols-[1.15fr_.85fr] lg:items-end"><div><p class="eyebrow text-brand-brass">Direct technical guidance</p><h2 class="mt-5 max-w-3xl font-serif text-6xl leading-[.92] sm:text-7xl">What are you producing right now?</h2><p class="mt-6 max-w-xl leading-7 text-white/70">Tell us the product, factory stage and problem. We will point you toward the most relevant manual or support pathway.</p></div><div class="lg:justify-self-end"><a href="https://wa.me/254745471300?text=Hello%20Precast%20Concrete%20Academy%2C%20I%20am%20currently%20producing%20or%20planning%20to%20produce%3A%20" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex w-full items-center justify-center rounded-lg bg-brand-brass px-7 py-4 font-semibold text-brand-green hover:bg-brand-brass-hover sm:w-auto">Talk on WhatsApp <span class="ml-3">→</span></a><a href="tel:+254745471300" class="focus-ring mt-4 block rounded text-center text-sm text-white/65 hover:text-white">+254 745 471 300</a></div></div><div class="mt-20 flex flex-col gap-6 border-t border-white/15 pt-8 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between"><div class="flex items-center gap-3"><span class="grid h-9 w-9 place-items-center rounded-lg border border-white/20 font-bold text-white">PCA</span><span>Precast Concrete Academy</span></div><p>© 2026 Precast Concrete Academy. Practical knowledge for stronger producers.</p></div></div></footer>
 <script>const menuButton=document.getElementById('menuButton'),mobileMenu=document.getElementById('mobileMenu'),openIcon=document.getElementById('menuOpenIcon'),closeIcon=document.getElementById('menuCloseIcon');function setMenu(open){mobileMenu.classList.toggle('hidden',!open);openIcon.classList.toggle('hidden',open);closeIcon.classList.toggle('hidden',!open);menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Close menu':'Open menu')}menuButton.addEventListener('click',()=>setMenu(menuButton.getAttribute('aria-expanded')!=='true'));mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));document.addEventListener('keydown',event=>{if(event.key==='Escape')setMenu(false)});const lossCalculator=document.getElementById('lossCalculator'),kes=new Intl.NumberFormat('en-KE',{style:'currency',currency:'KES',maximumFractionDigits:0});lossCalculator.addEventListener('submit',event=>{event.preventDefault();const daily=Math.max(0,Number(document.getElementById('calcDaily').value)),rate=Math.min(100,Math.max(0,Number(document.getElementById('calcRate').value))),cost=Math.max(0,Number(document.getElementById('calcCost').value)),days=Math.min(31,Math.max(1,Number(document.getElementById('calcDays').value))),months=Math.min(12,Math.max(1,Number(document.getElementById('calcMonths').value))),target=Math.min(100,Math.max(0,Number(document.getElementById('calcTarget').value))),annualUnits=daily*days*months,currentRejected=Math.round(annualUnits*rate/100),currentLoss=currentRejected*cost,targetRejected=Math.round(annualUnits*target/100),targetLoss=targetRejected*cost,saving=Math.max(0,currentLoss-targetLoss);document.getElementById('calcUnits').textContent=currentRejected.toLocaleString('en-KE');document.getElementById('calcLoss').textContent=kes.format(currentLoss);document.getElementById('calcTargetLoss').textContent=kes.format(targetLoss);document.getElementById('calcSaving').textContent=kes.format(saving);document.getElementById('calcNote').textContent=target>rate?'Your target reject rate is above the current rate, so no saving is shown. Enter a lower target to model an improvement.':'Estimate based on '+annualUnits.toLocaleString('en-KE')+' units produced per year. Actual recoverable savings depend on defect causes, corrective actions and verified factory records.';document.getElementById('calcResult').classList.remove('hidden')});</script>
+<script>
+(() => {
+  const tabs = [...document.querySelectorAll('[data-tool-tab]')];
+  const panels = [...document.querySelectorAll('[data-tool-panel]')];
+  const activateTab = (tab, focus = false) => {
+    tabs.forEach(item => {
+      const active = item === tab;
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+      item.classList.toggle('bg-brand-green', active);
+      item.classList.toggle('text-white', active);
+      item.classList.toggle('text-brand-muted', !active);
+    });
+    panels.forEach(panel => { panel.hidden = panel.id !== tab.dataset.toolTab; });
+    if (focus) tab.focus();
+  };
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateTab(tab));
+    tab.addEventListener('keydown', event => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      let next = index;
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = tabs.length - 1;
+      activateTab(tabs[next], true);
+    });
+  });
+
+  const number = id => Number(document.getElementById(id).value);
+  const kesTool = new Intl.NumberFormat('en-KE', { style: 'currency', currency: 'KES', maximumFractionDigits: 0 });
+  const whole = new Intl.NumberFormat('en-KE', { maximumFractionDigits: 0 });
+
+  document.getElementById('toolLossForm').addEventListener('submit', event => {
+    event.preventDefault();
+    const daily = Math.max(0, number('toolDaily'));
+    const days = Math.min(366, Math.max(1, number('toolWorkDays')));
+    const currentRate = Math.min(100, Math.max(0, number('toolRejectRate')));
+    const targetRate = Math.min(100, Math.max(0, number('toolTargetRate')));
+    const unitCost = Math.max(0, number('toolUnitCost'));
+    const annualOutput = daily * days;
+    const rejected = Math.round(annualOutput * currentRate / 100);
+    const currentLoss = rejected * unitCost;
+    const targetLoss = Math.round(annualOutput * targetRate / 100) * unitCost;
+    const saving = Math.max(0, currentLoss - targetLoss);
+    document.getElementById('toolRejectedUnits').textContent = whole.format(rejected);
+    document.getElementById('toolAnnualLoss').textContent = kesTool.format(currentLoss);
+    document.getElementById('toolTargetLoss').textContent = kesTool.format(targetLoss);
+    document.getElementById('toolPotentialSaving').textContent = kesTool.format(saving);
+    document.getElementById('toolLossNote').textContent = targetRate > currentRate
+      ? 'The target rate is higher than the current rate, so no potential reduction is shown.'
+      : `Based on ${whole.format(annualOutput)} units produced per year. Verify the reject rate and production cost using factory records.`;
+    document.getElementById('toolLossResult').classList.remove('hidden');
+  });
+
+  document.getElementById('toolFloorForm').addEventListener('submit', event => {
+    event.preventDefault();
+    const span = Math.max(0.1, number('toolSpan'));
+    const width = Math.max(0.1, number('toolFloorWidth'));
+    const spacing = Math.max(0.1, number('toolBeamSpacing'));
+    const module = Math.max(0.05, number('toolPotLength'));
+    const allowance = Math.min(25, Math.max(0, number('toolFloorWaste')));
+    const bays = Math.ceil(width / spacing);
+    const beamLines = bays + 1;
+    const beamLength = beamLines * span;
+    const unitsPerBay = Math.ceil(span / module);
+    const baseUnits = bays * unitsPerBay;
+    const orderUnits = Math.ceil(baseUnits * (1 + allowance / 100));
+    document.getElementById('toolBeamLines').textContent = whole.format(beamLines);
+    document.getElementById('toolBeamLength').textContent = `${beamLength.toFixed(1)} m`;
+    document.getElementById('toolPotBase').textContent = whole.format(baseUnits);
+    document.getElementById('toolPotOrder').textContent = whole.format(orderUnits);
+    document.getElementById('toolFloorNote').textContent = `Planning basis: ${bays} infill bays, beam centres not exceeding ${spacing.toFixed(2)} m, and ${unitsPerBay} infill modules per bay. Edge details, bearings, openings and cutting are not modelled.`;
+    const message = `Hello Ecoway Homes, I used the PCA flooring estimator. Preliminary inputs: span ${span.toFixed(2)} m, width ${width.toFixed(2)} m, spacing ${spacing.toFixed(2)} m, estimated ${beamLines} beam lines and ${orderUnits} infill units. Please prepare a verified quotation based on my drawings and project location.`;
+    document.getElementById('toolFloorWhatsApp').href = `https://wa.me/254745471300?text=${encodeURIComponent(message)}`;
+    document.getElementById('toolFloorResult').classList.remove('hidden');
+  });
+
+  document.getElementById('toolMoistureForm').addEventListener('submit', event => {
+    event.preventDefault();
+    const designWater = Math.max(0, number('toolDesignWater'));
+    const wetSand = Math.max(0, number('toolWetSand'));
+    const moisture = Math.min(50, Math.max(0, number('toolSandMoisture')));
+    const absorption = Math.min(20, Math.max(0, number('toolSandAbsorption')));
+    const drySand = wetSand / (1 + moisture / 100);
+    const freeWater = drySand * (moisture - absorption) / 100;
+    const mixerWater = Math.max(0, designWater - freeWater);
+    document.getElementById('toolDrySand').textContent = `${drySand.toFixed(1)} kg`;
+    document.getElementById('toolFreeWater').textContent = `${freeWater.toFixed(1)} L`;
+    document.getElementById('toolMixerWater').textContent = `${mixerWater.toFixed(1)} L`;
+    document.getElementById('toolMoistureNote').textContent = freeWater >= 0
+      ? `Reduce mixer water by approximately ${freeWater.toFixed(1)} L because measured moisture exceeds absorption. Confirm with a representative moisture test and trial batch.`
+      : `The sand is below the stated absorption condition and may absorb approximately ${Math.abs(freeWater).toFixed(1)} L. The calculated mixer-water addition includes that amount; confirm by trial batch.`;
+    document.getElementById('toolMoistureResult').classList.remove('hidden');
+  });
+})();
+</script>
 </body></html>
